@@ -191,15 +191,18 @@
 					325999051D8F1AF8000FE920 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = SR475BM36E;
+						LastSwiftMigration = 0800;
 					};
 					325999191D8F1AF8000FE920 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = SR475BM36E;
+						LastSwiftMigration = 0800;
 						TestTargetID = 325999051D8F1AF8000FE920;
 					};
 					325999241D8F1AF8000FE920 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = SR475BM36E;
+						LastSwiftMigration = 0800;
 						TestTargetID = 325999051D8F1AF8000FE920;
 					};
 				};
@@ -394,6 +397,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uakron.cs.ios.WhatsGood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -405,6 +409,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uakron.cs.ios.WhatsGood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -416,6 +421,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uakron.cs.ios.WhatsGoodTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhatsGood.app/WhatsGood";
 			};
 			name = Debug;
@@ -428,6 +434,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uakron.cs.ios.WhatsGoodTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhatsGood.app/WhatsGood";
 			};
 			name = Release;
@@ -439,6 +446,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uakron.cs.ios.WhatsGoodUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WhatsGood;
 				USES_XCTRUNNER = YES;
 			};
@@ -451,6 +459,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uakron.cs.ios.WhatsGoodUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = WhatsGood;
 				USES_XCTRUNNER = YES;
 			};
@@ -475,6 +484,7 @@
 				325999301D8F1AF8000FE920 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		325999311D8F1AF8000FE920 /* Build configuration list for PBXNativeTarget "WhatsGoodTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +493,7 @@
 				325999331D8F1AF8000FE920 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		325999341D8F1AF8000FE920 /* Build configuration list for PBXNativeTarget "WhatsGoodUITests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +502,7 @@
 				325999361D8F1AF8000FE920 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

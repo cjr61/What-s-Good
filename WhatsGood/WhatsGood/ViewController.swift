@@ -25,13 +25,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         captureSession = AVCaptureSession()
         captureSession?.sessionPreset = AVCaptureSessionPreset1920x1080         //POSSIBLE CHANGES TO RESOULTION HERE
         
-        var backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        var backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
     }
 }
 
