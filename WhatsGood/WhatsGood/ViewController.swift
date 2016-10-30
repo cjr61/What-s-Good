@@ -42,21 +42,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         var backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
         var error : NSError?
-        var input = AVCaptureDeviceInput (device: backCamera, error: &error)
-        
-        if error == nil && captureSession?.canAddInput(input) {
+        var input = AVCaptureDeviceInput()
+        do {
+            input = try AVCaptureDeviceInput(device: backCamera)
+        } catch {
+            //error
+        }
+        if error == nil && (captureSession?.canAddInput(input))! {
             captureSession?.addInput(input)
             stillImageOutput = AVCaptureStillImageOutput()
             stillImageOutput?.outputSettings = [AVVideoCodecKey : AVVideoCodecJPEG]
             
-            if captureSession?.canAddOutput(stillImageOutput) {
+            if (captureSession?.canAddOutput(stillImageOutput))! {
                 captureSession?.addOutput(stillImageOutput)
                 
                 previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                 previewLayer?.videoGravity = AVLayerVideoGravityResizeAspect
                 previewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.portrait
                 
-                cameraView.layer.addSublayer(previewLayer)
+                cameraView.layer.addSublayer(previewLayer!)
                 captureSession?.startRunning()
             }
         }
