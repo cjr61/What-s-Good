@@ -13,6 +13,7 @@
 		325999111D8F1AF8000FE920 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325999101D8F1AF8000FE920 /* Assets.xcassets */; };
 		3259991F1D8F1AF8000FE920 /* WhatsGoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259991E1D8F1AF8000FE920 /* WhatsGoodTests.swift */; };
 		3259992A1D8F1AF8000FE920 /* WhatsGoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325999291D8F1AF8000FE920 /* WhatsGoodUITests.swift */; };
+		3263BB691E4B9B5C00BF715D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3263BB681E4B9B5C00BF715D /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		325999251D8F1AF8000FE920 /* WhatsGoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsGoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		325999291D8F1AF8000FE920 /* WhatsGoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsGoodUITests.swift; sourceTree = "<group>"; };
 		3259992B1D8F1AF8000FE920 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3263BB681E4B9B5C00BF715D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3263BB691E4B9B5C00BF715D /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +82,7 @@
 				3259991D1D8F1AF8000FE920 /* WhatsGoodTests */,
 				325999281D8F1AF8000FE920 /* WhatsGoodUITests */,
 				325999071D8F1AF8000FE920 /* Products */,
+				3263BB671E4B9B5C00BF715D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +124,14 @@
 				3259992B1D8F1AF8000FE920 /* Info.plist */,
 			);
 			path = WhatsGoodUITests;
+			sourceTree = "<group>";
+		};
+		3263BB671E4B9B5C00BF715D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3263BB681E4B9B5C00BF715D /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
