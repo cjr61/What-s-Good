@@ -10,27 +10,44 @@ import UIKit
 import AVFoundation
 import MapKit
 import CoreLocation
+import CoreMotion
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
     
-    // Device Location services
-    let manager = CLLocationManager()
+    //gyroscope motion manager
+    var motionManager = CMMotionManager()
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    
+    // Device Location services
+    let locationManager = CLLocationManager()
+    
+    func locationManager(_ locationManager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         
+        //location data print
+        //print (myLocation)
         
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
+        
+        //location services request
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation() //gps
+        if (CLLocationManager.headingAvailable()) {
+            locationManager.headingFilter = 1 //compass
+            locationManager.startUpdatingHeading()
+        }
+        else{
+            print("no compass")
+        }
         
     }
     
@@ -48,6 +65,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     
     override func viewDidAppear(_ animated: Bool) {
+        //begin collecting gyro data
+        motionManager.startGyroUpdates(to: OperationQueue.current!) { (data, error) in
+            if let mydata = data{
+                //print(mydata.rotationRate)
+            }
+        }
+        
+        //camera setup
         super.viewDidAppear(animated)
         previewLayer?.frame = cameraView.bounds
     }
@@ -61,6 +86,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         var backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
+        //setting camera as background
         var error : NSError?
         var input = AVCaptureDeviceInput()
         do {
