@@ -14,6 +14,12 @@ import CoreMotion
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
     
+    // API data 
+    var apiData = [[String: AnyObject]]()
+    var userLat: Double = 0.0
+    var userLon: Double = 0.0
+    
+    
     //gyroscope motion manager
     var motionManager = CMMotionManager()
     
@@ -25,29 +31,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let location = locations[0]
         
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        userLat = myLocation.latitude
+        userLon = myLocation.longitude
         
         //location data print
-        //print (myLocation)
+        print (myLocation)
         
 
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         //location services request
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation() //gps
+        locationManager.startUpdatingLocation()         //gps
         if (CLLocationManager.headingAvailable()) {
-            locationManager.headingFilter = 1 //compass
+            locationManager.headingFilter = 1           //compass
             locationManager.startUpdatingHeading()
         }
         else{
             print("no compass")
         }
+        
+        
+        //API setup
+        print(userLon, userLat)
+        var url = "https://developers.zomato.com/api/v2.1/geocode?apikey=21a22086fa4c05e648be29aece327aea&lat=\(userLat)&lon=\(userLon)"
+        
+
         
     }
     
