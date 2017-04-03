@@ -60,8 +60,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //API setup
         print(userLon, userLat)
-        var url = "https://developers.zomato.com/api/v2.1/geocode?apikey=21a22086fa4c05e648be29aece327aea&lat=\(userLat)&lon=\(userLon)"
+        let url = "https://developers.zomato.com/api/v2.1/geocode?apikey=21a22086fa4c05e648be29aece327aea&lat=\(userLat)&lon=\(userLon)"
+        let urlRequest = URL(string: url)
         
+        URLSession.shared.dataTask(with: urlRequest!, completionHandler: {
+            (data, response, error) in
+            if (error != nil){
+                print(error.debugDescription)
+            }
+            else{
+                //handle api data
+            }
 
         
     }
