@@ -71,9 +71,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             else{
                 //handle api data
             }
-
-        
+        })
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
