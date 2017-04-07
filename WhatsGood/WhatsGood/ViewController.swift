@@ -16,9 +16,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // API data 
     var apiData = [[String: AnyObject]]()
-    var userLat: Double = 0.0
-    var userLon: Double = 0.0
-    
     
     //gyroscope motion manager
     var motionManager = CMMotionManager()
@@ -31,8 +28,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let location = locations[0]
         
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        userLat = myLocation.latitude
-        userLon = myLocation.longitude
         
         //location data print
         print (myLocation)
@@ -58,6 +53,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         
+        
+        
+        
+        let userLat = locationManager.location?.coordinate.latitude
+        let userLon = locationManager.location?.coordinate.longitude
         //API setup
         print(userLon, userLat)
         let url = "https://developers.zomato.com/api/v2.1/geocode?apikey=21a22086fa4c05e648be29aece327aea&lat=\(userLat)&lon=\(userLon)"
