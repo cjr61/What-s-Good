@@ -15,7 +15,7 @@ import CoreMotion
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     // API data 
-    var apiData = [[String: AnyObject]]()
+//    var apiData = [String: Any]()
     
     //gyroscope motion manager
     var motionManager = CMMotionManager()
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         
         //location data print
-        print (myLocation)
+        //print (myLocation)
         
 
     }
@@ -59,7 +59,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let userLat = locationManager.location?.coordinate.latitude
         let userLon = locationManager.location?.coordinate.longitude
         //API setup
-        print(userLon, userLat)
         let url = "https://developers.zomato.com/api/v2.1/geocode?apikey=21a22086fa4c05e648be29aece327aea&lat=\(userLat)&lon=\(userLon)"
         let urlRequest = URL(string: url)
         
@@ -69,7 +68,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 print(error.debugDescription)
             }
             else{
-                //handle api data
+                do {
+                    
+                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                    let nearbyFood = parsedData["nearby_restaurants"] as! [String:Any]
+                    
+                    print(nearbyFood)
+                    
+                } catch let error as NSError {
+                    print(error)
+                }
             }
         })
     }
