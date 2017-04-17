@@ -58,28 +58,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let userLat = locationManager.location?.coordinate.latitude
         let userLon = locationManager.location?.coordinate.longitude
+//        print (userLat)
+//        print (userLon)
         //API setup
-        let url = "https://developers.zomato.com/api/v2.1/geocode?apikey=21a22086fa4c05e648be29aece327aea&lat=\(userLat)&lon=\(userLon)"
-        let urlRequest = URL(string: url)
+        guard let url = URL(string: "https://developers.zomato.com/api/v2.1/geocode?apikey=21a22086fa4c05e648be29aece327aea&lat=\(userLat)&lon=\(userLon)") else{
+            print("ERROR: Invalid URL")
+            return
+        }
         
-        URLSession.shared.dataTask(with: urlRequest!, completionHandler: {
-            (data, response, error) in
-            if (error != nil){
-                print(error.debugDescription)
+        let task = URLSession.shared.dataTask(with: url) {
+            
+            (data, response, error) -> Void in
+            
+            // URL request is complete
+            guard let data = data else {
+                print("ERROR: Unable to access content")
+                return
             }
-            else{
-                do {
-                    
-                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
-                    let nearbyFood = parsedData["nearby_restaurants"] as! [String:Any]
-                    
-                    print(nearbyFood)
-                    
-                } catch let error as NSError {
-                    print(error)
+            
+            
+            do{
+                guard let parsedData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSDictionary else{
+                    print("ERROR: Unable to deserialize")
+                    return
                 }
+                
+                print (userLat)
+                print (userLon)
+                print (parsedData)
+
+                
+            } catch{
+                print("ERROR: unable to convert download")
+                print(error)
+                return
             }
-        })
+        }
+        
+        task.resume()
+
     }
     
     
