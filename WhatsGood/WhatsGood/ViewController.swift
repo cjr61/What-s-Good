@@ -58,10 +58,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let userLat = locationManager.location?.coordinate.latitude
         let userLon = locationManager.location?.coordinate.longitude
-//        print (userLat)
-//        print (userLon)
+
         //API setup
-        guard let url = URL(string: "https://developers.zomato.com/api/v2.1/geocode?apikey=21a22086fa4c05e648be29aece327aea&lat=\(userLat)&lon=\(userLon)") else{
+        guard let url = URL(string: "https://developers.zomato.com/api/v2.1/geocode?apikey=21a22086fa4c05e648be29aece327aea&lat=\(userLat!)&lon=\(userLon!)") else{
             print("ERROR: Invalid URL")
             return
         }
